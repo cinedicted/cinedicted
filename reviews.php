@@ -21,7 +21,7 @@
             <span class="author">By <?php echo the_author_meta( 'nickname' , $reviewPost->post_author);?></span>
             <time datetime=""><?php echo date_format(date_create($reviewPost->post_date), "d F Y")?></time>
         </div>
-        <div class="rating">* * * * *</div>
+        <div class="rating"><?php echo get_post_meta($slug, 'yasr_overall_rating', true); ?></div>
     </div>
     <div class="movie-review__info col-md-3 col-sm-4">
         <div class="cover-image">
