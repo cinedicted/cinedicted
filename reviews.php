@@ -13,6 +13,9 @@
 
     $release_date = substr($d, 0,2).'-'.substr($d, 2,2).'-'.substr($d, 4,4);
 
+    $query = $_GET;
+    // print_r($query);
+
 ?>
 <div class="movie-review container">
     <div class="movie-review__headline col-sm-12">
@@ -146,6 +149,18 @@
             <p><?php echo $reviewPost->post_content ?></p>
         </div>
         <aside></aside>
+    </div>
+    <div>
+        <?php
+            $posttags = get_the_tags($slug);
+            if ($posttags) {
+              foreach($posttags as $tag) {
+        ?>
+                <a href="<?php echo add_query_arg('tag', $tag->slug, 'sections/')?>"><?php echo $tag->name ?></a>
+        <?php
+              }
+            }
+        ?>
     </div>
 </div>
 <?php get_footer(); ?>

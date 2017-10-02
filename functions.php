@@ -48,3 +48,11 @@ function get_path() {
     }
     return $path;
 }
+
+function add_query_vars_filter( $vars ){
+  $vars[] = "rating";
+  $vars[] = "category";
+  $vars[] = "search";
+  return $vars;
+}
+add_filter( 'query_vars', 'add_query_vars_filter' );

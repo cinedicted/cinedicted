@@ -1,79 +1,46 @@
-<?php /* Template Name: Section */ ?>
+<?php /* Template Name: SearchResults */ ?>
 <?php get_header(); ?>
 
 <?php
-    if(get_query_var('order')){
-        $order = get_query_var('order');
-    }
-    if(get_query_var('rating')){
-        $rating = get_query_var('rating');
-    }
-    if(get_query_var('category')){
-        $cat = get_query_var('category');
-    }
-    if(get_query_var('tag')){
-        $tag = array(get_query_var('tag'));
-    }
-    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => 10,
-        'paged' => $paged,
-        'order' => $order
-    );
-    if($cat && !empty($cat)){
-        if($cat == 'latestarticle'){
-            $args['category__not_in'] = array( 1, 2 );
-        }else{
-            $args['category_name'] = $cat;
-        }
-    }
-    if($tag && !empty($tag)){
-        $args['tag_slug__in'] = $tag;
-    }
-    if($rating && !empty($rating)){
-        $args['meta_query'] = array(
-            array(
-                'key' => 'yasr_overall_rating',
-                'value' => $rating,
-                'type' => 'NUMERIC',
-                'compare' => '='
-            )
-        );
-    }
+    if(get_query_var('search')){
+        $text = get_query_var('search');
+    };
+            $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+                $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 10,
+                    'paged' => $paged,
+                    's' => $text,
+                    'order' => $order
+                );
+                if($cat && !empty($cat)){
+                    $args['category_name'] = $cat;
+                }
+                if($tag && !empty($tag)){
+                    $args['tag_slug__in'] = $tag;
+                }
+                if($rating && !empty($rating)){
+                    $args['meta_query'] = array(
+                            array(
+                                'key' => 'yasr_overall_rating',
+                                'value' => $rating,
+                                'type' => 'NUMERIC',
+                                'compare' => '='
+                            )
+                        );
+                    
+                }
+                print_r($args);
 
-    $query = new WP_Query($args);
+                $query = new WP_Query($args);
+
  ?>
 
 <div class="container">
     <div class="section-page col-xs-8">
         <div class="section-page-header">
-            <h1 class="section-name">
-                <?php
-                    $tagname = get_term_by('slug', get_query_var('tag'), post_tag);
-                    $categoryname = get_term_by('slug', get_query_var('category'), category);
-                    echo $tagname->name." Movies ".$categoryname->name;
-                ?>
-            </h1>
+            <h1 class="section-name">Displaying <?php echo $query->found_posts; ?> results for <?php echo $text; ?></h1>
             <div class="sort-container">
-                <?php if(get_query_var('category') == 'reviews' || get_query_var('category') == 'archives') {?>
-                <div class="sort-by">Sort By:</div>
-                <div class="sort-by-rating">
-                    <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="rating" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Rating
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="<?php echo add_query_arg('rating', 5); ?>">*****</a></li>
-                        <li><a href="<?php echo add_query_arg('rating', 4); ?>">****</a></li>
-                        <li><a href="<?php echo add_query_arg('rating', 3); ?>">***</a></li>
-                        <li><a href="<?php echo add_query_arg('rating', 2); ?>">**</a></li>
-                        <li><a href="<?php echo add_query_arg('rating', 1); ?>">*</a></li>
-                      </ul>
-                    </div>
-                </div>
-                <?php } ?>
                 <div class="sort-by-publish-date">
                     <div class="dropdown">
                       <button class="btn btn-default dropdown-toggle" type="button" id="publish-date" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -142,6 +109,7 @@
             </div>
             <?php endwhile; ?>
         </div>
+        
         <nav aria-label="...">
           <ul class="pager">
             <li><?php previous_posts_link( 'Previous' ); ?></li>

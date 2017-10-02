@@ -34,5 +34,17 @@
         </div>
     </div>
 </div>
+<div>
+    <?php
+        $posttags = get_the_tags($slug);
+        if ($posttags) {
+          foreach($posttags as $tag) {
+    ?>
+            <a href="<?php echo add_query_arg('tag', $tag->slug, 'sections/')?>"><?php echo $tag->name ?></a>
+    <?php
+          }
+        }
+    ?>
+</div>
 </div>
 <?php get_footer(); ?>
