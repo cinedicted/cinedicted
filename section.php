@@ -35,9 +35,9 @@
         $args['meta_query'] = array(
             array(
                 'key' => 'yasr_overall_rating',
-                'value' => $rating,
-                'type' => 'NUMERIC',
-                'compare' => '='
+                'value' => array((float)$rating - 0.49, (float)$rating + 0.5),
+                'type' => 'DECIMALS',
+                'compare' => 'BETWEEN'
             )
         );
     }
