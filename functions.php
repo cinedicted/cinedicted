@@ -5,6 +5,7 @@ function cinedicted_script_enqueue() {
     wp_enqueue_script('jquerymin', get_template_directory_uri() . '/js/jquery.min.js');
     wp_enqueue_script('slickjs', get_template_directory_uri() . '/js/slick.js');
     wp_enqueue_style('bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css');
+    wp_enqueue_style('fawesome_css', get_template_directory_uri() . '/css/font-awesome.min.css');
     wp_enqueue_script('bootstrap_js', get_template_directory_uri() . '/js/bootstrap.min.js');
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/cinedicted.css', array(), 1.0, 'all');
     wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css', array(), 1.0, 'all');
