@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Quicksand:300,400,500,700" rel="stylesheet">
     </head>
     <body class="cinedicted-container container-fluid" id="cinedicted-container">
-        <header class="cinedicted-header col-lg-12 ">
+        <header class="cinedicted-header">
             <div class="hamburger hidden-lg">
               <div class="bar1"></div>
               <div class="bar2"></div>
