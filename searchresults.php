@@ -5,36 +5,23 @@
     if(get_query_var('search')){
         $text = get_query_var('search');
     };
-            $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-                $args = array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $text,
-                    'order' => $order
-                );
-                if($cat && !empty($cat)){
-                    $args['category_name'] = $cat;
-                }
-                if($tag && !empty($tag)){
-                    $args['tag_slug__in'] = $tag;
-                }
-                if($rating && !empty($rating)){
-                    $args['meta_query'] = array(
-                            array(
-                                'key' => 'yasr_overall_rating',
-                                'value' => $rating,
-                                'type' => 'NUMERIC',
-                                'compare' => '='
-                            )
-                        );
-                    
-                }
-                print_r($args);
-
-                $query = new WP_Query($args);
-
- ?>
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+        $args = array(
+            'post_type' => 'post',
+            'posts_per_page' => 10,
+            'paged' => $paged,
+            's' => $text,
+            'order' => $order
+        );
+        if($cat && !empty($cat)){
+            $args['category_name'] = $cat;
+        }
+        if($tag && !empty($tag)){
+            $args['tag_slug__in'] = $tag;
+        }
+        wp_reset_query();
+        $query = new WP_Query($args);
+?>
 
 <div class="container">
     <div class="section-page col-xs-8">
@@ -67,13 +54,6 @@
                         <li><a href="<?php echo add_query_arg('tag', 'telugu'); ?>">Telugu</a></li>
                       </ul>
                     </div>
-                </div>
-                <div>
-                    <button class="btn btn-default">
-                        <a href="<?php the_permalink(); ?>">
-                            <span>Reset</span>
-                        </a>
-                    </button>
                 </div>
             </div>
         </div>
@@ -116,5 +96,6 @@
             <li><?php next_posts_link( 'Next', $query->max_num_pages ); ?></li>
           </ul>
         </nav>
+        <?php wp_reset_query(); ?>
     </div>
 </div>

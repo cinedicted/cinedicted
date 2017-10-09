@@ -41,7 +41,7 @@
             )
         );
     }
-
+    wp_reset_query();
     $query = new WP_Query($args);
  ?>
 
@@ -101,18 +101,12 @@
                       </ul>
                     </div>
                 </div>
-                <div>
-                    <button class="btn btn-default">
-                        <a href="<?php the_permalink(); ?>">
-                            <span>Reset</span>
-                        </a>
-                    </button>
-                </div>
             </div>
         </div>
         <div class="stories-container">
             <?php 
-                while($query->have_posts()) : $query->the_post();
+                if($query->have_posts()){
+                    while($query->have_posts()) : $query->the_post();
             ?>
             <div class="story">
                 <div class="story-image-container col-lg-4">
@@ -140,7 +134,11 @@
                     <div class="publish-date"><?php the_date(); ?></div>
                 </div>
             </div>
-            <?php endwhile; ?>
+            <?php endwhile; 
+            }else{
+                echo "No posts found";
+            }
+            ?>
         </div>
         <nav aria-label="...">
           <ul class="pager">
@@ -148,5 +146,6 @@
             <li><?php next_posts_link( 'Next', $query->max_num_pages ); ?></li>
           </ul>
         </nav>
+        <?php wp_reset_query(); ?>
     </div>
 </div>
