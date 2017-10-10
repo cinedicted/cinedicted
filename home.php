@@ -3,8 +3,9 @@
 <?php
     $args = array(
     'post_type' => 'post',
+    'post_status' => 'publish',
     'posts_per_page' => 3,
-    'category__not_in' => array( 1, 2 ),
+    'category_name' => 'pickoftheweek', 'previews',
     'order' => 'DESC'
     );
     wp_reset_query();
@@ -36,7 +37,7 @@
                     </h2>
                     <div class="author-info">
                         <span class="by">By</span>
-                        <div class="author-name"><?php the_author(); ?></div>
+                        <div class="author-name"><?php echo get_the_ID(); ?></div>
                     </div>
                 </div>
             </div>
@@ -59,7 +60,7 @@
                         </h2>
                         <div class="author-info">
                             <span class="by">By</span>
-                            <div class="author-name"><?php the_author(); ?></div>
+                            <div class="author-name"><?php echo get_the_ID(); ?></div>
                         </div>
                     </div>
                 </div>
@@ -76,6 +77,7 @@
         <?php
             $args = array(
             'post_type' => 'post',
+            'post_status' => 'publish',
             'posts_per_page' => 5,
             'category_name' => 'reviews',
             'order' => 'DESC'
@@ -97,18 +99,14 @@
                         </figure>
                     </div>
                     <div class="review-info">
-                        <?php 
-                            $post_rating = get_post_meta(get_the_ID(), 'yasr_overall_rating', true);
-                            if($post_rating) {?>
                         <div class="star-rating">
-                            <?php echo get_post_meta(get_the_ID(), 'yasr_overall_rating', true); ?>
+                            <?php echo do_shortcode('[yasr_overall_rating size="medium"]');?>
                         </div>
-                        <?php } ?>
                         <div class="title"><?php the_title(); ?></div>
                         <div class="excerpt"><?php echo the_excerpt(); ?></div>
                         <div class="author-info">
                             <span class="by">By</span>
-                            <div class="author-name"><?php the_author(); ?></div>
+                            <div class="author-name"><?php echo get_the_ID(); ?></div>
                         </div>
                     </div>
                 </li>
@@ -127,8 +125,9 @@
                 <?php
                     $args = array(
                     'post_type' => 'post',
+                    'post_status' => 'publish',
                     'posts_per_page' => 5,
-                    'category__not_in' => array( 1, 2 ),
+                    'category_name' => 'pickoftheweek', 'previews',
                     'offset' => 3,
                     'order' => 'DESC'
                     );
@@ -156,7 +155,7 @@
                         </div>
                         <div class="author-info">
                             <span class="by">By</span>
-                            <div class="author-name"><?php the_author(); ?></div>
+                            <div class="author-name"><?php echo get_the_ID(); ?></div>
                         </div>
                         <div class="publish-time">
                             <?php the_date(); ?>
@@ -175,6 +174,7 @@
                         <?php
                             $args = array(
                                 'post_type' => 'post',
+                                'post_status' => 'publish',
                                 'posts_per_page' => 5,
                                 'category_name' => 'reviews',
                                 'orderby' => 'meta_value_num',
@@ -198,7 +198,7 @@
                                 <h4 class="movie-title">
                                     <?php the_title(); ?>
                                 </h4>
-                                <div class="star-rating"><?php echo get_post_meta(get_the_ID(), 'yasr_overall_rating', true); ?></div>
+                                <div class="star-rating"><?php echo do_shortcode('[yasr_overall_rating size="small"]');?></div>
                             </div>
                         </li>
                         <?php endwhile; 
@@ -293,8 +293,9 @@
                 <?php
                     $args = array(
                     'post_type' => 'post',
+                    'post_status' => 'publish',
                     'posts_per_page' => 5,
-                    'category__not_in' => array( 1, 2 ),
+                    'category_name' => 'pickoftheweek', 'previews',
                     'offset' => 8,
                     'order' => 'DESC'
                     );
@@ -322,7 +323,7 @@
                         </div>
                         <div class="author-info">
                             <span class="by">By</span>
-                            <div class="author-name"><?php the_author(); ?></div>
+                            <div class="author-name"><?php echo get_the_ID(); ?></div>
                         </div>
                         <div class="publish-time">
                             <?php the_date(); ?>
@@ -334,6 +335,7 @@
             <?php
                 $args = array(
                 'post_type' => 'post',
+                'post_status' => 'publish',
                 'posts_per_page' => 5,
                 'category_name' => 'memes',
                 'order' => 'DESC'
@@ -366,5 +368,10 @@
                 </div>
             </div>
     </div>
+    <div class="five-block">
+        <div class="left-block col-lg-8">
+            <?php echo do_shortcode('[ajax_load_more post_type="post" category="pickoftheweek,previews" offset="13" pause="false" scroll="true"]'); ?>
+         </div> 
+     </div>
 </div>
 <?php get_footer(); ?>
