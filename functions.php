@@ -1,5 +1,4 @@
 <?php
-
 function cinedicted_script_enqueue() {
     wp_enqueue_script('jquery_migrate', get_template_directory_uri() . '/js/jquery.migrate.min.js');
     wp_enqueue_script('jquerymin', get_template_directory_uri() . '/js/jquery.min.js');
@@ -13,21 +12,15 @@ function cinedicted_script_enqueue() {
     wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css');
     wp_enqueue_script('customscript', get_template_directory_uri() . '/js/cinedicted.js', array(), 1.0, true);
 }
-
 add_action('wp_enqueue_scripts', 'cinedicted_script_enqueue');
-
 function cinedicted_theme_setup() {
     add_theme_support('menus');
     register_nav_menu('primary', 'this will be the main menu');
 }
-
 add_action('init', 'cinedicted_theme_setup');
-
-
 /*Theme Support*/
 add_theme_support('html5', array('search-form'));
 add_theme_support( 'post-thumbnails' );
-
 function get_path() {
     $path = array();
     if (isset($_SERVER['REQUEST_URI'])) {
@@ -49,7 +42,6 @@ function get_path() {
     }
     return $path;
 }
-
 function add_query_vars_filter( $vars ){
   $vars[] = "rating";
   $vars[] = "category";
