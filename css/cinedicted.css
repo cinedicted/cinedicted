@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0 !important;
     color: #333;
-    background: #f9fbe7;
+    background: #fafaf2;
 }
 
 .col-sm-4,
@@ -57,10 +57,47 @@ element {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
+    width: 100%;
     margin: 0 auto;
 }
 
+figure img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.movie-review,
+.preview-page-container,
+.pick-of-the-week-container,
+.listing-page,
+.search-results {
+    border: 1px solid;
+    margin: 20px auto;
+    box-shadow: 0px 0px 5px;
+    background-color: white;
+    padding: 20px !important;
+}
+@media (max-width: 1300px) {
+    .container {
+        width: auto;
+    }
+    
+    .movie-review,
+    .preview-page-container,
+    .pick-of-the-week-container {
+        padding: 0 !important;
+        margin: 10px;
+    }
+}
 /*Header*/
 .cinedicted-header {
     display: flex;
@@ -177,13 +214,12 @@ element {
     color: white;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1200px) {
     .cinedicted-header {
-        align-items: stretch;
         padding: 10px;
     }
     .logo-container img {
-        width: 250px;
+        width: 175px;
     }
     .header-right {
         display: flex !important;
@@ -202,9 +238,26 @@ element {
     .secondary-menu-list__item a {
         color: black;
     }
+    .primary-menu-list__item a {
+        font-size: 20px;
+    }
     .header-bottom {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .hamburger {
+        order: 1;
+    }
+    .search-icon {
+        order: 2;
+    }
+    .secondary-menu-list.visible-lg {
+        order: 0;
+        padding-left: 0 !important;
+    }
+    .secondary-menu-list__item:first-child {
+        padding-left: 0;
     }
     .secondary-menu-list__item a {
         color: white;
@@ -213,6 +266,26 @@ element {
         overflow: auto;
         padding: 10px 30px;
     }
+    
+    .secondary-menu-list.visible-lg {
+        display: flex !important;
+        flex-direction: row;
+        padding: 0 10px;
+    }
+    
+    .search-icon {
+        margin-left: auto;
+    }
+    
+    .secondary-menu-list.visible-lg a {
+        font-size: 20px;
+        color: black;
+    }
+    
+    .menu-items {
+        padding: 0;
+    }
+    
 }
 
 /*Header complete */
@@ -222,34 +295,58 @@ element {
     font-family: 'Oswald', sans-serif;
 }
 
-.movie-review .review-title {
+.movie-review .review-title,
+.preview-page .preview-title,
+.pick-of-the-week-page .pick-of-the-week-title {
     font-weight: bold;
     margin-bottom: 5px !important;
     font-family: 'Quicksand', sans-serif;
+    color: white;
+    background: black;
+    padding: 10px;
 }
 
-.movie-review .byline {
+.movie-review .byline,
+.preview-page .byline,
+.pick-of-the-week-page .byline {
     margin-bottom: 5px;
     font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.rating {
+    display: none;
+}
+
+.rating-star {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    white-space: nowrap;
+    color: #bbb;
+    line-height: 1em;
+    font-size: 20px;
+    margin-left: 0 !important;
+}
+
+.rating-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #FFBB00;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .movie-review time {
-    font-style: italic;
+    font-size: 16px;
     font-family: 'EB Garamond', serif;
 }
 
 .movie-review .cover-image figure {
     position: relative;
-    padding-top: 156%;
-}
-
-.movie-review .cover-image img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    padding-top: 144%;
 }
 
 .movie-info .movie-name {
@@ -258,24 +355,27 @@ element {
     padding: 10px 0;
     background-color: #263238;
     color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .movie-info .list-title {
     text-align: center;
     font-weight: bold;
-    padding: 10px;
-    background-color: #000a12;
-    color: white;
+    padding: 5px;
+    background-color: #fafaf2;
+    color: black;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .movie-info li {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #4f5b62;
     color: #fff;
     text-transform: capitalize;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .movie-review__body img {
@@ -283,8 +383,32 @@ element {
     margin: 10px 0;
 }
 
-.movie-review .review-content {
+.movie-review .review-content,
+.preview-description,
+.pick-of-the-week-description {
+    font-size: 19px;
     font-family: 'EB Garamond', serif;
+}
+
+.keywords {
+    margin: 10px 0;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.keywords span {
+    padding-left: 5px;
+}
+
+.keywords span a {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.keywords span:not(:last-child):after {
+    position: absolute;
+    content: ', ';
+    display: inline-block;
+    color: #337ab7;
 }
 
 
@@ -312,19 +436,6 @@ element {
     text-align: center;
 }
 
-.pick-list .pick-title {
-    padding: 10px 0;
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.pick-list .author-name {
-    text-align: center;
-    font-family: 'EB Garamond', serif;
-}
-
 @media (max-width: 768px) {
     .top-deck,
     .top-deck__stories,
@@ -337,62 +448,6 @@ element {
     .top-deck .story:nth-child(n+5) {
         margin-bottom: 20px;
     }
-    .pick-of-the-week-container .pick-title,
-    .pick-of-the-week-container .author-name {
-        text-align: left;
-    }
-    
-    .pick-of-the-week-container .pick-title {
-        padding-bottom: 0;
-    }
-}
-
-.pick-of-the-week-container {
-    padding: 10px;
-    overflow: auto;
-}
-
-.pick-list .pick-list__item figure {
-    padding-top: 133%;
-}
-
-.pick-list .pick-list__item img {
-    object-fit: cover;
-}
-
-.pick-of-the-week-container img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.pick-list .pick-list__item {
-    padding: 20px 10px !important;
-}
-
-@media (max-width: 768px) {
-    .pick-list .pick-list__item {
-        padding: 10px 0 !important;
-    }
-    .pick-list .pick-list__item figure {
-        padding-top: 75%;
-    }
-    .pick-of-the-week-container,
-    .pick-list__item {
-        padding: 10px 0 !important;
-    }
-    
-    .pick-list {
-        padding: 0 !important;
-    }
-    
-    h2.pick-header {
-        margin: 0 !important;
-    }
 }
 
 @media (min-width: 1200px) {
@@ -401,33 +456,9 @@ element {
         padding-right: 0;
     }
     
-    .top-deck__stories > .top-story img {
-        object-fit: cover;
-    }
-    
     .top-deck__stories .story-headline {
         width: 80% !important;
         bottom: 10px !important;
-    }
-    
-    .top-deck__stories .rest-stories {
-        padding: 0 !important;
-        margin: 10px 0 0 0;
-    }
-    
-    .top-deck__stories .rest-stories .story:first-child {
-        padding-right: 5px !important;
-        padding-left: 0 !important;
-    }
-    
-    .top-deck__stories .rest-stories .story:last-child {
-        padding-left: 5px !important;
-        padding-right: 0 !important;
-    }
-    
-    .t-bar .trending-movie-info,
-    .t-bar .trailers-movie-info {
-        flex-grow: 4 !important;
     }
     
     .latest-articles .latest-article {
@@ -439,52 +470,20 @@ element {
         width: 970px;
     }
     
+    .slot-placeholder {
+        margin: 0 auto;
+        float: none;
+    }
+    
+    .slot-placeholder img {
+        width: 100%;
+        height: 250px;
+    }
+    
     .bottom-deck .slot-placeholder {
         width: 380px;
         margin: 10px 0;
     }
-}
-
-
-
-.top-deck figure img,
-.bottom-deck figure img, 
-.mid-deck figure img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.top-deck__reviews .review-header,
-.memes-container .memes-header,
-.qotw-container .qotw-header {
-    padding: 10px 0;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
-    text-align: left;
-    font-size: 16px;
-    padding-top: 0;
-    display: block;
-    position: relative;
-}
-
-.top-deck__reviews .review-header:after,
-.memes-container .memes-header:after,
-.qotw-container .qotw-header:after {
-    background: #000;
-    content: "";
-    display: block;
-    height: 1px;
-    position: absolute;
-    top: 30%;
-    width: 75%;
-    left: 25%;
 }
 
 .reviews-list__item > div {
@@ -544,35 +543,15 @@ element {
 }
 
 .slick-next {
-    right: 0 !important;
-    margin-right: 10px !important;
+    right: 20px !important;
 }
 
 .slick-prev {
-    left: 0 !important;
-    margin-left: 10px !important;
+    left: 20px !important;
 }
 
 .memes-list figure {
     padding-top: 100%;
-}
-
-.latest-articles .latest-articles-header,
-.previews-container .previews-header,
-.archives-container .archives-header,
-.tv-news-container .tv-news-header,
-.tech-container .tech-header,
-.analysis-container .analysis-header,
-.pick-header {
-    text-align: left;
-    padding: 10px;
-    background-color: #263238;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 16px;
-    font-family: 'Quicksand', sans-serif;
-    margin: 0 20px !important;
 }
 
 .latest-articles .latest-article,
@@ -642,71 +621,6 @@ element {
     text-align: right;
 }
 
-
-/*t bar*/
-
-.t-bar .trailers-movie-list,
-.t-bar .trending-movie-list {
-    margin: 10px 0;
-}
-
-.t-bar .image-container,
-.t-bar .trending-movie-info,
-.t-bar .trailers-movie-info {
-    flex-basis: 0;
-    flex-grow: 1;
-}
-
-.t-bar .trending-movie-info,
-.t-bar .trailers-movie-info {
-    padding: 0 10px;
-}
-
-.t-bar .trending-movie-item,
-.t-bar .trailers-movie-item {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.t-bar .movie-list {
-    display: none;
-}
-
-.t-bar .movie-list.current {
-    display: inherit;
-}
-
-.t-bar .t-bar__header {
-    display: flex;
-}
-
-.t-bar .movie-title {
-    font-family: 'Quicksand', sans-serif;
-}
-
-.t-bar .trailers,
-.t-bar .trending {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #4f5b62;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    flex-grow: 1;
-    font-size: 16px;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.t-bar .t-bar__header .current {
-    background-color: #263238;
-}
-
-.slot-placeholder {
-    text-align: center;
-    width: 300px;
-    margin: 10px auto;
-}
-
 .qotw-container .question,
 .qotw-container .answer-excerpt {
     text-align: center;
@@ -753,7 +667,6 @@ element {
     padding-top: 56.25%;
 }
 
-.preview-page .preview-body img,
 .preview-page iframe {
     position: absolute;
     width: 100%;
@@ -789,7 +702,11 @@ element {
     margin: 10px 0 !important;
 }
 
-.pick-of-the-week-page .pick-of-the-week-body img,
+.pick-of-the-week-page .cover-image figure {
+    margin: 0 !important;
+}
+
+.pick-of-the-week-page .pick-of-the-week-body .cover-image img,
 .pick-of-the-week-page iframe {
     position: absolute;
     width: 100%;
@@ -799,6 +716,20 @@ element {
     top: 0;
     bottom: 0;
     object-fit: cover;
+}
+
+.pick-of-the-week-description img,
+.preview-description img {
+    border-style: none;
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 10px solid;
+    margin: 10px 0;
+}
+
+.keywords-header {
+    display: inline-block;
 }
 
 
@@ -812,21 +743,18 @@ element {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0;
+    padding: 10px 0;
     border: 1px solid;
     border-left: 0;
     border-right: 0;
     margin: 20px 0;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 16px;
 }
 
-.sort-container button {
-    font-family: 'EB Garamond', serif;
-}
-
-.section-page .pager a {
-    font-family: 'EB Garamond', serif;
+.section-page .pager a,
+.sort-container button{
+    font-family: 'Quicksand', sans-serif;
     font-weight: bold;
 }
 
@@ -841,23 +769,12 @@ element {
     padding-top: 75%;
 }
 
-.section-page .story-image-container figure img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .section-page .story-image-container {
     padding: 0 !important;
     position: relative;
 }
 
-.section-page .story-image-container .star-rating {
+.section-page .story-image-container .star-rating-container {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -868,6 +785,10 @@ element {
     line-height: 1;
 }
 
+.section-page .story-image-container .rating-unfilled {
+    color: white;
+}
+
 .section-page .story-headline,
 .section-page .story-excerpt {
     margin-bottom: 10px !important;
@@ -876,6 +797,7 @@ element {
 .section-page .story-headline,
 .section-page .section-name {
     font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
 }
 
 .section-page .story-headline {
@@ -1049,7 +971,7 @@ footer {
     flex-direction: column;
     border-top: 1px solid;
     padding: 20px 0;
-    margin: 20px 0 0 0;
+    margin: 10px 10px 60px;
 }
 
 footer .subscribe-to-newsletter {
@@ -1100,20 +1022,6 @@ footer .facebook a:before {
     font-family: 'Quicksand', sans-serif;
 }
 
-.subscribe-to-newsletter {
-    width: 320px !important;
-}
-
-.subscribe-to-newsletter .tnp-email {
-    border: 1px solid !important;
-    width: 70% !important;
-}
-
-.subscribe-to-newsletter .tnp-submit {
-    width: 30% !important;
-    padding: 11px !important;
-}
-
 
 /*Home*/
 
@@ -1123,51 +1031,15 @@ footer .facebook a:before {
     overflow: auto;
 }
 
-.cinedicted-home .top-deck {
-    padding: 20px;
-}
-
-.top-deck .story {
-    position: relative;
-}
-
-.cinedicted-home .top-deck .section-name {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    background-color: #c6c8b5;
-    z-index: 1;
-    padding: 5px;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.rest-stories .story .section-name {
-    left: 0;
-}
-
-.cinedicted-home .top-deck .story-info {
-    position: absolute;
-    bottom: 0;
-    padding: 10px;
-    width: 85%;
-    background-color: rgba(198,200,181, 0.6);
-}
-
 .top-deck figure {
     position: relative;
     padding-top: 75%;
 }
 
-.initial-story .story-headline,
-.rest-stories .story .story-headline {
+.initial-story .story-headline {
     font-size: 24px;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
-}
-
-.rest-stories .story .story-headline {
-    font-size: 16px;
 }
 
 .story .author-name {
@@ -1179,37 +1051,16 @@ footer .facebook a:before {
     line-height: 1;
 }
 
-.rest-stories .story:first-child {
-    margin-bottom: 15px;
-}
-
 .story .author-info,
 .review-info .author-info {
     font-family: 'EB Garamond', serif;
     font-weight: bold;
 }
 
-.reviews-container .reviews-header,
-.polls-container .polls-header {
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
-    text-transform: uppercase;
-    position: relative;
-    margin-bottom: 10px !important;
-    color: #f9fbe7;
-}
-
-.reviews-container .reviews-header:after,
-.polls-container .polls-header:after {
-    background: #f9fbe7;
-    content: "";
-    display: block;
-    height: 1px;
-    position: absolute;
-    top: 35%;
-    width: 80%;
-    left: 20%;
+.trending,
+.trailers,
+.poll-header {
+    margin: 10px !important;
 }
 
 .polls-container .polls-header {
@@ -1224,16 +1075,13 @@ footer .facebook a:before {
     padding-top: 56.25%;
 }
 
-.reviews-container .review-image img {
-    object-fit: cover;
-}
-
 .reviews-container .review-info {
     background: #C6C8B5;
     border: 1px solid;
     padding: 11px;
     box-shadow: inset 0 0 15px #000000;
     text-align: center;
+    overflow: hidden;
 }
 
 .reviews-container .review-info .star-rating,
@@ -1246,18 +1094,16 @@ footer .facebook a:before {
 .reviews-container .review-info .title {
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
+    color: #333;
 }
 
 .reviews-container .excerpt {
     font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
 }
 
 .reviews-container .author-name {
     display: inline-block;
-}
-
-.top-deck {
-    background: black;
 }
 
 .bottom-deck .story,
@@ -1267,10 +1113,7 @@ footer .facebook a:before {
 
 .bottom-deck {
     float: none;
-}
-
-.five-block {
-    padding: 10px 0;
+    overflow: auto;
 }
 
 .five-block .story {
@@ -1280,23 +1123,19 @@ footer .facebook a:before {
     border-bottom: 1px solid;
 }
 
-.five-block .story:not(:first-child) {
+.five-block .story {
     padding-top: 10px;
 }
 
-.five-block .story:not(:first-child) .section-name {
-    top: 10px;
-}
-
 .five-block .image-container {
-    flex-grow: 1;
+    flex-grow: 2;
     flex-basis: 0;
 }
 
 .five-block .section-name {
     position: absolute;
     z-index: 1;
-    top: 0;
+    top: 10px;
     left: 0;
     font-family: 'Quicksand', sans-serif;
     background-color: #c6c8b5;
@@ -1308,14 +1147,18 @@ footer .facebook a:before {
     padding-top: 75%;
 }
 
+.five-block .memes-container figure {
+    padding-top: 100%;
+}
+
 .five-block .story-headline {
-    font-size: 24px;
+    font-size: 18px;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
 }
 
 .five-block .story-info {
-    flex-grow: 2;
+    flex-grow: 3;
     flex-basis: 0;
     padding: 0 10px;
 }
@@ -1341,17 +1184,36 @@ footer .facebook a:before {
     .story .section-name {
         left: 0;
     }
-    
-    .rest-stories {
-        padding: 0 !important;
+}
+
+@media (min-width: 1200px) {
+    .five-block .left-block {
+        display: flex;
+        flex-wrap: wrap;
     }
-    
-    .reviews-container {
-        margin: 20px 0;
+    .five-block .story {
+        width: 33.33%;
     }
 }
-.polls-container {
-    clear: both;
+
+.right-block {
+    background-color: black;
+    margin: 10px 0;
+}
+
+.right-block .slot-placeholder {
+    float: left !important;
+}
+
+.poll-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.poll-list__item {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 10px;
 }
 
 .yop-poll-container {
@@ -1364,10 +1226,19 @@ div[id^='yop-poll-questions-container'], div[id*=' yop-poll-questions-container'
     padding: 30px;
 }
 
-div[class^='yop-poll-question-3'], div[class*=' yop-poll-question-3'],
-div[class^='yop-poll-answer-3'], div[class*=' yop-poll-answer-3'] {
+div[id^='yop-poll-question'], div[id*=' yop-poll-question']{
+    text-align: left !important;
+}
+
+div[class^='yop-poll-question'], div[class*=' yop-poll-question'],
+div[class^='yop-poll-answer'], div[class*=' yop-poll-answer'] {
     font-size: 16px !important;
     font-family: 'Quicksand', sans-serif !important;
+    font-weight: bold;
+}
+
+div[id^='yop-poll-answer'], div[id*=' yop-poll-answer'] {
+    margin-left: 10px !important;
 }
 
 .polls-container .slick-arrow {
@@ -1383,4 +1254,644 @@ div[class^='yop-poll-answer-3'], div[class*=' yop-poll-answer-3'] {
     text-transform: uppercase !important;
     font-weight: bold !important;
     font-family: 'Quicksand', sans-serif !important;
+}
+
+
+
+
+
+
+/*Final Home*/
+@media (min-width:320px) {
+    .top-deck-stories {
+        max-width: 1690px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 10px;
+        background: black;
+    }
+    .top-deck .story {
+        position: relative;
+    }
+    .top-deck .section-name {
+        position: absolute;
+        top: 0;
+        background-color: #c6c8b5;
+        z-index: 1;
+        padding: 5px;
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    .top-deck .story {
+        margin-bottom: 10px;
+    }
+    
+    .story a,
+    .potw-story a,
+    .preview-story a,
+    .trending-story a,
+    .tv-show-story a,
+    .memory-lane-story a
+    .trailers-story .title {
+        color: #333;
+    }
+    
+    .top-deck .story-info,
+    .potw-info,
+    .qna-info .title {
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        width: 85%;
+        background-color: rgba(198,200,181, 1);
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    .story-headline {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .reviews-container .reviews-header,
+    .polls-container .polls-header,
+    .trending-header,
+    .trailers,
+    .poll-header,
+    .potw-header,
+    .previews-header,
+    .tv-shows-header,
+    .memory-lane-header,
+    .analysis-header,
+    .technical-header,
+    .poll-header,
+    .trailers-header,
+    .memes-header,
+    .qna-header {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 10px !important;
+        color: #f9fbe7;
+        background-color: black;
+    }
+    
+    .reviews-header a,
+    .potw-header a,
+    .previews-header a,
+    .tv-shows-header a,
+    .memory-lane-header a,
+    .analysis-header a,
+    .technical-header a,
+    .qna-header a {
+        color: #f9fbe7;
+    }
+    
+    .reviews-container {
+        border-top: 1px solid white;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    
+        
+    .review-info .title,
+    .review-info .excerpt,
+    .review-info .author-info {
+        color: #333;
+    }
+    
+    .slick-slider {
+        margin-bottom: 0 !important;
+    }
+    
+    .container {
+        margin: 10px auto;
+    }
+    
+    .potw-header,
+    .previews-header,
+    .tv-shows-header,
+    .analysis-header,
+    .technical-header,
+    .qna-header {
+        margin: 0;
+        padding: 10px !important;
+    }
+    
+    .trending-header,
+    .trailers-header,
+    .poll-header,
+    .memes-header,
+    .memory-lane-header {
+        margin: 10px 0 !important;
+        padding: 10px !important;
+    }
+    
+    .potw-story {
+        padding: 0 !important;
+        margin-bottom: 10px;
+    }
+    
+    .potw-image figure {
+        position: relative;
+        padding-top: 75%;
+    }
+    
+    .potw-info .title,
+    .potw-info .author-info {
+        font-family: 'Quicksand', sans-serif;
+        text-align: left;
+        padding: 5px;
+        font-weight: bold;
+    }
+    .potw-info .author-info {
+        font-weight: normal;
+        font-family: 'EB Garamond', serif;
+    }
+    
+    .author-info .author-name {
+        display: inline-block;
+    }
+    
+    .more-button a {
+        display: inline-block;
+        float: right;
+        font-weight: bold;
+        color: #f9fbe7;
+        background: black;
+        padding: 10px 20px;
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    .more-button {
+        padding: 0 !important;
+        overflow: auto;
+    }
+    
+    .col-lg-8,
+    .col-lg-6,
+    .col-lg-4,
+    .col-lg-12 {
+        padding: 0 !important;
+    }
+    
+    .previews-list,
+    .tv-shows-list,
+    .memory-lane-list,
+    .analysis-list,
+    .technical-list{
+        overflow: auto;
+    }
+    
+    .preview-image figure,
+    .tv-show-image figure,
+    .memory-lane-image figure,
+    .analysis-image figure,
+    .technical-image figure,
+    .trending-image figure,
+    .trailers-image figure,
+    .memes-image figure,
+    .qna-info figure {
+        position: relative;
+        padding-top: 75%;
+    }
+    
+    .preview-story a,
+    .tv-show-story a,
+    .memory-lane-story a,
+    .analysis-story a,
+    .technical-story a,
+    .trending-story a,
+    .trailers-story a {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .preview-story .preview-image,
+    .tv-show-story .tv-show-image,
+    .memory-lane-story .memory-lane-image,
+    .analysis-story .analysis-image,
+    .technical-story .technical-image,
+    .trending-story .trending-image,
+    .trailers-story .trailers-image {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+    
+    .preview-story .preview-info,
+    .tv-show-story .tv-show-info,
+    .memory-lane-story .memory-lane-info,
+    .analysis-story .analysis-info,
+    .technical-story .technical-info,
+    .trending-story .trending-info,
+    .trailers-story .trailers-info {
+        flex-basis: 0;
+        flex-grow: 2;
+        padding: 0 10px;
+    }
+    
+    .preview-info .title,
+    .tv-show-info .title,
+    .memory-lane-info .title,
+    .analysis-info .title,
+    .technical-info .title,
+    .trending-info .title,
+    .trailers-info .title,
+    .qna-info .title {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: bold;
+    }
+    
+    .qna-info .title {
+        margin: 0;
+        color: #333;
+    }
+    
+    .qna-info {
+        margin-bottom: 10px;
+    }
+    
+    .preview-info .author-info,
+    .tv-show-info .author-info,
+    .memory-lane-info .author-info,
+    .analysis-info .author-info,
+    .technical-info .author-info {
+        font-weight: normal;
+        font-family: 'EB Garamond', serif;
+    }
+    
+    .trailers-list iframe {
+        width: 100%;
+    }
+    
+    .cinedicted-header {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .listing-page,
+    .search-results,
+    .pick-of-the-week-container,
+    .movie-review {
+        margin: 10px;
+        padding: 0 !important;
+    }
+    
+    .section-page,
+    .pick-of-the-week-page,
+    .movie-review {
+        padding: 10px !important;
+    }
+    
+    .pick-of-the-week-page .trending-header,
+    .movie-review .trending-header {
+        margin: 10px 0 !important;
+    }
+    
+    .movie-review .right-side,
+    .movie-review .trending-container {
+        overflow: auto;
+        clear: both;
+    }
+}
+
+@media (min-width: 1024px) {
+    .movie-review .right-side,
+    .movie-review .trending-container {
+        overflow: auto;
+        clear: none;
+    }
+    
+    .listing-page,
+    .search-results,
+    .pick-of-the-week-container,
+    .movie-review {
+        margin: 10px auto;
+        padding: 0 !important;
+    }
+    
+    .col-lg-8,
+    .col-lg-6,
+    .col-lg-4,
+    .col-lg-12 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .more-button {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .potw-header,
+    .previews-header,
+    .tv-shows-header,
+    .memory-lane-header,
+    .analysis-header,
+    .technical-header,
+    .trending-header,
+    .poll-header,
+    .trailers-header,
+    .memes-header,
+    .qna-header {
+        margin: 10px !important;
+    }
+    
+    .potw-info,
+    .qna-info .title {
+        position: relative;
+        background: none;
+        padding: 0;
+        width: auto;
+    }
+    
+    .potw-story {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin-bottom: 0;
+    }
+    
+    .top-deck-stories {
+        padding: 20px;
+    }
+    .top-deck {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+    }
+    
+    .reviews-container .excerpt {
+        height: 85px;
+        overflow: hidden;
+    }
+    
+    .top-deck .story:nth-child(1) {
+        width: 43%;
+    }
+    .top-deck .story:nth-child(1) figure {
+        padding-bottom: 85.014005602241%;
+        padding-top: 0;
+    }
+
+    .top-deck .story:nth-child(2) {
+        top: 0;
+        left: 44.5%;
+        width: 27%;
+        position: absolute;
+    }
+    .top-deck .story:nth-child(3) {
+        bottom: 0;
+        left: 44.5%;
+        width: 27%;
+        position: absolute;
+    }
+    .top-deck .story:nth-child(2) figure,
+    .top-deck .story:nth-child(3) figure {
+        padding-bottom: 65.625%;
+        padding-top: 0;
+    }
+    .top-deck .reviews-container {
+        top: 0;
+        right: 0;
+        width: 27%;
+        position: absolute;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .reviews-container .review-info {
+        height: 197px;
+    }
+    
+    .reviews-container .review-image figure {
+        padding-top: 75%;
+    }
+    
+    .slick-slider {
+        margin-bottom: 0 !important;
+    }
+    .top-deck .story-headline {
+        font-size: 24px;
+    }
+    .top-deck .story:nth-child(2) .story-headline,
+    .top-deck .story:nth-child(3) .story-headline {
+        font-size: 20px;
+    }
+    
+    .potw-container {
+        margin: 10px auto;
+    }
+    
+    .trending-story .trending-info,
+    .trailers-story .trailers-info {
+        flex-grow: 4;
+    }
+    
+    .qna-info {
+        background-color: rgba(198,200,181, 1);
+        font-family: 'Quicksand', sans-serif;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .slick-dots li button:before {
+        font-size: 35px !important;
+    }
+    
+    .potw-image figure {
+        padding-top: 125%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .potw-story {
+        width: 20% !important;
+    }
+}
+
+.connect-to-us-container {
+    margin-top: 10px;
+}
+
+
+.connect-to-us-container > .shortcode_wysija {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.shortcode_wysija form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.shortcode_wysija .wysija-submit {
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    -webkit-appearance: none;
+    margin-top: 10px;
+}
+
+.shortcode_wysija form > div {
+    padding: 10px 0 20px;
+    font-size: 20px;
+}
+
+.shortcode_wysija .privacy {
+    font-size: 16px;
+}
+
+.shortcode_wysija form > div span {
+    font-weight: bold;
+}
+
+.wysija-paragraph {
+    display: flex;
+    padding: 10px 0 20px;
+    align-items: center;
+}
+
+.wysija-paragraph label {
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.social-icons .fb:before {
+    font-family: 'FontAwesome';
+    content: '\f09a';
+	position: relative;
+	font-size: 24px;
+    color: #3b5998;
+}
+
+.social-icons .twitter:before {
+    font-family: 'FontAwesome';
+    content: '\f099';
+	position: relative;
+	font-size: 24px;
+    color: #55acee;
+}
+
+.social-icons .gplus:before {
+    font-family: 'FontAwesome';
+    content: '\f2b3';
+	position: relative;
+	font-size: 24px;
+    color: #dd4b39;
+}
+
+.follow-us-container {
+    border-top: 1px dotted;
+    border-bottom: 1px dotted;
+    margin: 10px;
+    padding: 10px;
+}
+
+.follow-us-container .follow-us {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.follow-us-container .social-icons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.follow-us-container .social-icons li {
+    padding: 0 10px;
+}
+
+.fixed-newsletter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 10px;
+    z-index: 100;
+    display: none;
+}
+
+.fixed-newsletter .shortcode_wysija form {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fixed-newsletter .shortcode_wysija form > div {
+    padding: 0;
+    font-size: 16px;
+    margin: 0 20px;
+}
+
+.fixed-newsletter .shortcode_wysija form > div {
+    margin: 0 20px !important;
+}
+
+.fixed-newsletter .shortcode_wysija .wysija-submit {
+    margin: 0 20px;
+}
+
+.fixed-newsletter .wysija-paragraph {
+    padding: 0;
+}
+
+#relatedposts {
+    margin: 10px 0;
+}
+
+#relatedposts li {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+#relatedposts h3 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+#relatedposts > h3 {
+    font-weight: bold;
+}
+
+#relatedposts .image-container {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+#relatedposts figure {
+    padding-top: 75%;
+}
+
+.relatedcontent > h3 {
+    line-height: 1;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.relatedcontent > h3 a {
+    color: #333;
+}
+
+#relatedposts .relatedcontent {
+    flex-basis: 0;
+    flex-grow: 2;
+    padding: 0 10px;
+}
+
+.preview-description img {
+    position: relative !important;
 }
